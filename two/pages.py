@@ -80,6 +80,6 @@ class Mobile(Page):
         return self.participant.vars['is_mobile']
 
 page_sequence = [Welcome, Mobile,
-                 # Instructions, QuizQuestions, QuizAnswers,
+                 Instructions, QuizQuestions, QuizAnswers,
                  # Cross,
                  Decision, Feedback, Results]
