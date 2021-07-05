@@ -1,0 +1,71 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block styles %}
+<style>
+.content {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+    font-size: 1.3rem;
+    padding-top: 5%;
+}
+.page-header {
+    margin: 0px;
+}
+
+.otree-body.container {
+    margin: 0px auto 0px;
+    font-weight: normal;
+}
+
+.form-group {
+    text-align: left;
+}
+
+body { background-color:black; }
+
+/* remove bullets from lists */
+li { list-style-type: none; }
+.form-check-input[type="radio"] { font-size: 1.2rem; margin-top: 0.45rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row content">
+    <div class="col-7">
+    <p>In this study, you are asked to classify whether the numbers that appear on your screen are larger or smaller than...</p>
+
+        {% formfields %}
+
+    <p>Choose one of the options and press ENTER to confirm your answer.</p>
+    </div>
+
+</div>
+
+<button id="confirm" type="submit" style="display:none;"></button>
+
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+    var confirm = document.getElementById("confirm");
+
+    function confirmClicked() {
+        confirm.click();
+    }
+
+    document.onkeydown = function (e) {
+        var keyCode = e.keyCode;
+        // When ENTER is pressed
+        if(keyCode == 13) {
+            confirmClicked();
+        }
+    };
+</script>
+{% endblock %}

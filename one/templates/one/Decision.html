@@ -1,0 +1,137 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block styles %}
+<style>
+    .content {
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        font-size: 70px;
+    }
+
+    .page-header {
+        margin: 0px;
+    }
+
+    .otree-body.container {
+        margin: 0px auto 0px;
+        font-size: 1.5rem;
+        font-weight: normal;
+    }
+
+    .number-div { display: none; }
+    .cross-div { text-align: center; }
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="row content">
+        <div class="number-div" style="text-align: center;">{{ number }}</div>
+        <div class="cross-div"><img src="{% static '/global/fixation_cross.png' %}"></div>
+    </div>
+    <button id="show-results-btn" style="display: none;"></button>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    var threshold = parseInt( {{ Constants.threshold }} );
+
+    document.onkeydown = function (e) {
+        if ( accept_input == true ) {
+            var keyCode = e.keyCode;
+            var number = parseInt(document.querySelector('.number-div').textContent);
+            console.log(number);
+
+            // If A is pressed ('Lower')
+            if( keyCode == 65 ) {
+                var local_time = (new Date() - start) / 1000;
+                var decision = 'Lower';
+                if ( number < threshold ) {
+                    var correct = 1;
+                } else {
+                    var correct = 0;
+                }
+
+                var data = [decision, correct, local_time];
+                liveSend(data);
+            }
+
+            // If ? is pressed ('Higher'; L for IT keyboard)
+            if( keyCode == 76 ) {
+                var local_time = (new Date() - start) / 1000;
+                var decision = 'Higher';
+                if ( number > threshold ) {
+                    var correct = 1;
+                } else {
+                    var correct = 0;
+                }
+
+                var data = [decision, correct, local_time];
+                liveSend(data);
+            }
+        }
+    };
+</script>
+<script>
+    // accept input from player only once after number is shown (avoid key spamming)
+    var accept_input = true;
+
+    // duration of cross in milliseconds; used at various points in the script
+    var cross_ms = parseInt({{ Constants.cross_ms }});
+
+    // duration of break in milliseconds
+    var break_ms = parseInt({{ Constants.break_ms }});
+
+    function showNumber() {
+        document.querySelector('.cross-div').style.display = 'none';
+        document.querySelector('.number-div').style.display = 'block';
+
+        // reset timestamp when Number is shown
+        start =  new Date();
+        accept_input = true;
+    }
+
+    function showCross() {
+        document.querySelector('.cross-div').style.display = 'block';
+        document.querySelector('.number-div').style.display = 'none';
+        accept_input = false;
+    }
+
+    // show Number and get initial timestamp
+    var start;
+    setTimeout(showNumber, cross_ms);
+</script>
+<script>
+    // Update Number Live
+    function liveRecv(response) {
+
+        // Update Number function
+        function updateNumber() {
+                    document.querySelector('.number-div').innerHTML = response['number'];
+        };
+
+        if ( response['iteration'] < {{ Constants.num_iterations }} ) {
+
+            // show cross for 200ms and then number
+            showCross();
+
+            // check for break
+            var breaks = {{ Constants.breaks }};
+
+            if ( breaks.includes(response['iteration']) == true ) {
+                setTimeout(showNumber, break_ms);
+                setTimeout(updateNumber, break_ms);
+            } else {
+                setTimeout(showNumber, cross_ms);
+                setTimeout(updateNumber, cross_ms);
+            }
+        } else {
+            document.querySelector('#show-results-btn').click();
+        };
+    };
+</script>
+{% endblock %}

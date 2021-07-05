@@ -1,0 +1,68 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block styles %}
+<style>
+.content {
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+    font-size: 1.3rem;
+    text-align: center;
+}
+.page-header {
+    margin: 0px;
+}
+
+.otree-body.container {
+    margin: 0px auto 0px;
+    font-weight: normal;
+}
+
+.form-group {
+    text-align: left;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row content">
+    <div class="col-7">
+        <p>The correct answer was <font color="red"><b>Z</font></b>.</p>
+
+<p>On each trial, press “Z” if the number displayed on the left of your screen is larger than the number displayed on the right and press “?” if the number displayed on the right of your screen is larger than the number displayed on the left.
+</p>
+    <br>
+
+    <p>When you are ready to begin with the paid trials, press ENTER.</p>
+
+    </div>
+
+</div>
+
+<button id="start" type="submit" style="display:none;"></button>
+
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+    var start = document.getElementById("start");
+
+    function startClicked() {
+        start.click();
+    }
+
+    document.onkeydown = function (e) {
+        var keyCode = e.keyCode;
+        // When ENTER is pressed
+        if(keyCode == 13) {
+            startClicked();
+        }
+    };
+</script>
+{% endblock %}

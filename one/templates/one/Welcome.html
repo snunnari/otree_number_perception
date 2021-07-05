@@ -1,0 +1,85 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block styles %}
+<style>
+.content {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+    font-size: 1.3rem;
+    text-align: center;
+    padding-top: 5%;
+}
+.page-header {
+    margin: 0px;
+}
+
+.otree-body.container {
+    margin: 0px auto 0px;
+    font-weight: normal;
+}
+
+body {background-color:black;}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row content">
+    <div class="col-7">
+        <p>Thank you for participating in this study!</p>
+        <p></p>
+        <p>Before we begin, please close all other applications on your computer
+            and put away your cell phone. This study will last approximately <b><font color="red">5 minutes</font></b>. During this time, we ask your complete
+            and undistracted attention.</p>
+
+              <p>You will earn $1 for completing the study and you will have the opportunity to <b><font color="red">earn
+                more money</font></b> depending on your answers during the study.</p>
+        <p></p>
+        <p>The instructions are given in the next page.</p>
+        <p></p>
+        <p>When you are ready to continue, press ENTER.</p>
+
+    <!--<p>Welcome to the experiment.</p>
+    <br>
+    <p>Instructions for each task will be provided in the appropriate sections.</p>
+    <p>At some points during the experiment, you will be asked control questions to ensure you are paying attention.</p>
+    <p>Failing to answer control questions may lead to your exclusion from the study and from payment.</p>
+    <br>
+    <p>Please read carefully the Instructions and answer the control questions you will be presented with.</p>
+    <br>
+    <p>Press ANY KEY to begin.</p>-->
+    </div>
+</div>
+
+<button id="start" type="submit" style="display:none;"></button>
+
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+    var start = document.getElementById("start");
+
+    document.onkeydown = function (e) {
+        var keyCode = e.keyCode;
+        // When ENTER is pressed
+        if(keyCode == 13) {
+            start.click();
+        }
+    };
+</script>
+<script>
+    var start = document.getElementById("start");
+
+    // When ANY KEY is pressed
+    document.onkeydown = function() {
+            start.click();
+    };
+</script>
+{% endblock %}

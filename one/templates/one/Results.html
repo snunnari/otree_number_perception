@@ -1,0 +1,50 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+<style>
+.content {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+    padding-top: 5%;
+}
+.page-header {
+    margin: 0px;
+}
+
+.otree-body.container {
+    margin: 0px auto 0px;
+    font-size: 1.3rem;
+    font-weight: normal;
+}
+
+body { background-color:black; }
+</style>
+{% endblock %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<div class="row content">
+    <div class="col-6">
+        <h2>Results</h2>
+    Your Accuracy: {{ accuracy }}%<br>
+    Your Average Decision Time: {{ speed }}<br>
+    <br>
+
+    Your Points: {{ Constants.rate_accuracy }} x {{ accuracy_per }} -
+        {{ Constants.rate_speed }} x {{ speed }} = {{ player.payoff }}
+
+    <!--<br><br>
+        <center>
+         <b><font color="red"><a href="https://app.prolific.co/submissions/complete?cc=73E92D32">CLICK HERE</a> to confirm you completed the study and be paid!</font></b>
+        </center>-->
+
+  </div>
+</div>
+
+
+{% endblock %}

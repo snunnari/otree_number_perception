@@ -1,0 +1,96 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block styles %}
+<style>
+.content {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+    font-size: 1.3rem;
+    text-align: center;
+    padding-top: 5%;
+}
+.page-header {
+    margin: 0px;
+}
+
+.otree-body.container {
+    margin: 0px auto 0px;
+    font-weight: normal;
+}
+
+body {background-color:black;}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row content">
+    <div class="col-8">
+        <p>In this study, you will see a series of numbers and will be asked to classify whether
+            each number is <b><font color="red">larger or smaller than {{ Constants.threshold }}</font></b>. If the number displayed is smaller than {{ Constants.threshold }},
+            press the “A” key. If the number displayed is larger than {{ Constants.threshold }}, press the "L" key.</p>
+        <p></p>
+
+        <p>Your bonus payment will depend on the speed and accuracy of your classification. Specifically:</p>
+        <p></p>
+        <p><center>Bonus Payment = $ (1.5 x accuracy – 1 x speed)</center></p>
+        <p></p>
+        <!--<p>Your points will depend on the speed and accuracy of your classification. Specifically:</p>
+        <p></p>
+        <p><center>Points = 150 x accuracy – 100 x speed</center></p>
+        <p></p>-->
+
+
+        <p>where "accuracy" is the percentage of trials where you correctly classified the number as larger or smaller than {{ Constants.threshold }},
+            and "speed" is the average amount of time it takes you to classify the number on all trials throughout the study, in seconds.</p>
+
+            <p>Thus, you make the most money by answering
+            as <b><font color="red">quickly</font></b> and as <b><font color="red">accurately</font></b> as possible.</p>
+        <p></p>
+        <!--<p>For example, if you correctly classified the number on all trials and it took you 0.3 seconds to respond to each question,
+        you would earn 150 x 100% - 100 x 0.3 = 120 points. If instead you only classified 70% of the numbers correctly and took 0.8 seconds
+            to respond to each question, you would earn 150 x 70% - 100 x 0.8) = 25 points.</p>
+        <p></p>-->
+
+        <p>For example, if you correctly classified the number on all trials and it took you 0.3 seconds to respond to each question,
+        you would earn $(1.5 x 100% - 10 x 0.3) = $1.20. If instead you only classified 70% of the numbers correctly and took 0.8 seconds
+            to respond to each question, you would earn $(1.5 x 70% - 10 x 0.8) = $0.25.</p>
+        <p></p>
+        <p>The study will be separated into 4 parts of 50 trials each. In between, you can take a short
+        break.</p>
+        <p></p>
+        <p><b><font color="red">Please read the instructions on this page carefully!</font></b></p>
+
+        <p>Before starting with the classification task, you will be asked a question to check your understanding of the instructions.</p>
+        <p></p>
+        <p>When you are ready to continue, press ENTER.</p>
+    </div>
+</div>
+
+<button id="start" type="submit" style="display:none;"></button>
+
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+    var start = document.getElementById("start");
+
+    function startClicked() {
+        start.click();
+    }
+
+    document.onkeydown = function (e) {
+        var keyCode = e.keyCode;
+        // When ENTER is pressed
+        if(keyCode == 13) {
+            startClicked();
+        }
+    };
+</script>
+{% endblock %}

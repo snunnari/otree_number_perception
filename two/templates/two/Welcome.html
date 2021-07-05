@@ -1,0 +1,68 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block styles %}
+<style>
+.content {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+    font-size: 1.3rem;
+    text-align: center;
+    padding-top:5%;
+}
+.page-header {
+    margin: 0px;
+}
+
+.otree-body.container {
+    margin: 0px auto 0px;
+    font-weight: normal;
+}
+body {background-color:black;}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row content">
+    <div class="col-7">
+        <p>Thank you for participating in this study!</p>
+        <p></p>
+        <p>Before we begin, please close all other applications on your computer and put away
+            your cell phone. This study will last approximately <b><font color="red">5 minutes</font></b>.
+            During this time, we ask your complete and undistracted attention. You will earn $1
+            for completing the study and you will have the opportunity to <b><font color="red">earn
+                more money</font></b> depending on your answers during the study.</p>
+        <p></p>
+        <p>The instructions are given in the next page.</p>
+        <p></p>
+        <p>When you are ready to continue, press ENTER.</p>
+    </div>
+</div>
+
+<button id="start" type="submit" style="display:none;"></button>
+
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+    var start = document.getElementById("start");
+
+    function startClicked() {
+        start.click();
+    }
+
+    document.onkeydown = function (e) {
+        var keyCode = e.keyCode;
+        // When ENTER is pressed
+        if(keyCode == 13) {
+            startClicked();
+        }
+    };
+</script>
+{% endblock %}

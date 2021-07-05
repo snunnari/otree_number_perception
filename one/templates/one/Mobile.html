@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+<style>
+.content {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+    text-align: center;
+}
+.page-header {
+    margin: 0px;
+}
+
+.otree-body.container {
+    margin: 0px auto 0px;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+body {background-color:black;}
+</style>
+{% endblock %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<div class="row content">
+    <div class="col-7">
+    This study requires you to use a physical keyboard and, for this reason,
+    you can participate only from a desktop or laptop computer.<br>
+    Sorry!
+  </div>
+</div>
+{% endblock %}
+
+

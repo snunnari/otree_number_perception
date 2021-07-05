@@ -1,0 +1,66 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block styles %}
+<style>
+.content {
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+    font-size: 1.3rem;
+    text-align: center;
+}
+.page-header {
+    margin: 0px;
+}
+
+.otree-body.container {
+    margin: 0px auto 0px;
+    font-weight: normal;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-check-input[type="radio"] { font-size: 1.2rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row content">
+    <div class="col-7">
+        <p>On each trial, what key are you asked to press if the number displayed on the left on your screen is larger than the number displayed on the right?</p>
+        {% formfields %}
+
+    <p>Press ENTER to confirm your answer.</p>
+    </div>
+
+</div>
+
+<button id="confirm" type="submit" style="display:none;"></button>
+
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+    var confirm = document.getElementById("confirm");
+
+    function confirmClicked() {
+        confirm.click();
+    }
+
+    document.onkeydown = function (e) {
+        var keyCode = e.keyCode;
+        // When ENTER is pressed
+        if(keyCode == 13) {
+            confirmClicked();
+        }
+    };
+</script>
+{% endblock %}

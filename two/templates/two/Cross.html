@@ -1,0 +1,78 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+<style>
+.content {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+}
+
+.page-header {
+    margin: 0px;
+}
+
+.otree-body.container {
+    margin: 0px auto 0px;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+.cross-instructions {
+    position: absolute;
+    margin-top: 200px;
+}
+
+body {background-color:black;}
+</style>
+{% endblock %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+<div class="row content">
+    <img src="{% static '/global/fixation_cross.png' %}">
+  <div class="cross-instructions">
+    {% if turn in Constants.breaks %}
+    Press ANY KEY to continue
+    {% endif %}
+  </div>
+</div>
+
+    {% if turn in Constants.breaks %}
+        <button id="next-break" type="submit" style="display:none;">Advance</button>
+    {% else %}
+        <button id="next" type="submit" style="display:none;"></button>
+    {% endif %}
+
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+ var next = document.getElementById("next");
+
+ setTimeout(function(){
+    next.click();
+ }, 200);
+</script>
+
+<script>
+    var advance = document.getElementById("next-break");
+
+    function nextClicked() {
+        advance.click();
+    }
+
+    // When ANY KEY is pressed
+    document.onkeydown = function() {
+            nextClicked();
+    };
+</script>
+{% endblock %}
+
