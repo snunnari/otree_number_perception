@@ -1,4 +1,4 @@
-# oTree App for Number Perception and Discrimination Tasks
+# oTree Apps for Number Perception and Discrimination Tasks
 
 ### Authors
 * Luca Congiu, Tor Vergata University
