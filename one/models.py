@@ -39,7 +39,7 @@ class Constants(BaseConstants):
     num_rounds = 1  # set to 1 in an App with live pages; Original: 150
 
     # number of iterations (equivalent of "num_rounds" for an App with live pages)
-    num_iterations = 15  # Original: 150
+    num_iterations = 150  # Original: 150
 
     # cross duration in milliseconds
     cross_ms = 500

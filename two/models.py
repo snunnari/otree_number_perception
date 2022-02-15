@@ -26,7 +26,7 @@ class Constants(BaseConstants):
     num_rounds = 1
 
     # number of iterations (equivalent of "num_rounds" for an App with live pages)
-    num_iterations = 10  # Original: 150
+    num_iterations = 150  # Original: 150
 
     # cross duration in milliseconds
     cross_ms = 500
@@ -34,7 +34,7 @@ class Constants(BaseConstants):
     # break duration in milliseconds
     break_ms = 5000
 
-    low = 31
+    low = 11
     high = 99
 
     rate_accuracy = 1.5
@@ -127,7 +127,3 @@ class Player(BasePlayer):
         # set payoff
         self.payoff = c(Constants.rate_accuracy * round(mean(self.participant.vars['responses_correct']), 2) -
                         Constants.rate_speed * round(mean(self.participant.vars['responses_time']), 2))
-
-
-
-
