@@ -3,13 +3,13 @@ from os import environ
 SESSION_CONFIGS = [
     dict(
        name='one',
-       display_name="One Number vs Benchmark",
+       display_name="Number Discrimination Task: One Number on Screen (vs Benchmark)",
        num_demo_participants=3,
        app_sequence=['one']
     ),
     dict(
        name='two',
-       display_name="Two Numbers",
+       display_name="Number Discrimination Task: Two Numbers on Screen",
        num_demo_participants=3,
        app_sequence=['two']
     ),
