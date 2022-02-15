@@ -7,9 +7,9 @@
 ### About
 This repository contains two oTree apps:
 
-* **one**: discrimination task between one two-digits number on the screen and a benchmark not on the screen (e.g., 55) as in the experiments by Dehaene, Dupoux, and Mehler (1990), "Is Numerical Comparison Digital? Analogical and Symbolic Effects in Two-Digit Number Comparison," Journal of Experimental Psychology: Human Perception and Performance, 16,(3): 626
+* **one**: discrimination task between one (two-digits) number on the screen and a benchmark not on the screen (e.g., 55) as in the experiments by Dehaene, Dupoux, and Mehler (1990), "Is Numerical Comparison Digital? Analogical and Symbolic Effects in Two-Digit Number Comparison," Journal of Experimental Psychology: Human Perception and Performance, 16,(3): 626
 
-* **two**: discrmination task between two two-digits numbers on the screen
+* **two**: discrmination task between two (two-digits) numbers on the screen
 
 This app was developed with oTree version 3.3.11.
 
