@@ -68,10 +68,12 @@ class Subsession(BaseSubsession):
             # AMOUNTS FROM CSV #
             # N: to generate a new set of numbers, run script "generate_numbers.py" in project folder
             for p in self.get_players():
-                if self.round_number == 1 and p.id_in_group % 2 == 1:
-                    p.participant.vars['numbers'] = data_vector_high[int((p.id_in_group+1)/2-1)][:Constants.num_iterations]
-                elif self.round_number == 1 and p.id_in_group % 2 == 0:
-                    p.participant.vars['numbers'] = data_vector_low[int(p.id_in_group/2-1)][:Constants.num_iterations]
+                if self.round_number == 1:
+                    p.participant.vars['numbers'] = data_vector_high[int(p.id_in_group-1)][:Constants.num_iterations]
+                #if self.round_number == 1 and p.id_in_group % 2 == 1:
+                #    p.participant.vars['numbers'] = data_vector_high[int((p.id_in_group+1)/2-1)][:Constants.num_iterations]
+                #elif self.round_number == 1 and p.id_in_group % 2 == 0:
+                #    p.participant.vars['numbers'] = data_vector_low[int(p.id_in_group/2-1)][:Constants.num_iterations]
 
                 # participant vars for live function
                 p.participant.vars['responses'] = []
