@@ -1,5 +1,8 @@
 # oTree App for Number Discrimination Tasks
-### Salvatore Nunnari, Bocconi University, salvatore.nunnari@unibocconi.it
+
+### Authors
+* Luca Congiu, Tor Vergata University
+* Salvatore Nunnari, Bocconi University, salvatore.nunnari@unibocconi.it
 
 This repository contains two oTree apps:
 
