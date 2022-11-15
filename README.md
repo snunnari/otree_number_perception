@@ -12,5 +12,3 @@ This repository contains two oTree apps:
 * **two**: discrmination task between two (two-digits) numbers on the screen as in the experiments by Moyer and Landauer (1967), "Time Required for Judgements of Numerical Inequality," *Nature*, 215(5109): 1519-1520
 
 This app was developed with oTree version 3.3.11.
-
-Demo: https://number-perception.herokuapp.com/demo/
